@@ -89,13 +89,16 @@ lda = LinearDiscriminantAnalysis()
 # y_pred = svm_clf.predict(X_test_reduced)
 # print accuracy_score(y_pred, y_test)
 #
-knn_clf = KNeighborsClassifier()
+knn_clf = KNeighborsClassifier(n_neighbors =10)
 from sklearn.pipeline import Pipeline
 lda_knn =  Pipeline([('LDA', lda), ('KNN', knn_clf)])
+lda_knn.fit(X_train, y_train)
+y_pred_test = lda_knn.predict(X_test)
+print accuracy_score(y_pred_test, y_test)
 
-from sklearn.model_selection import GridSearchCV
-param_grid = [{"KNN__n_neighbors":np.arange(5,30,5)}]
-grid_search = GridSearchCV(lda_knn, param_grid= param_grid, scoring='accuracy',
-verbose = 2,  cv = 3)
-grid_search.fit(X_train,y_train)
-print grid_search.best_params_
+# from sklearn.model_selection import GridSearchCV
+# param_grid = [{"KNN__n_neighbors":np.arange(5,30,5)}]
+# grid_search = GridSearchCV(lda_knn, param_grid= param_grid, scoring='accuracy',
+# verbose = 2,  cv = 3)
+# grid_search.fit(X_train,y_train)
+# print grid_search.best_params_

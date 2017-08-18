@@ -1,7 +1,7 @@
 ''' Locality Linear Embedding'''
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+# from mpl_toolkits.mplot3d import Axes3D
 from sklearn.datasets import make_swiss_roll
 from sklearn.manifold import LocallyLinearEmbedding
 from sklearn.manifold import Isomap
@@ -12,9 +12,10 @@ from sklearn.manifold import TSNE
 X, t = make_swiss_roll(n_samples=1000, noise=0.2, random_state=41)
 # visualize it
 fig = plt.figure()
-ax = Axes3D(fig)
-ax.set_title("Original data")
-ax.scatter(X[:,0], X[:,1], X[:,2], c = t, cmap=plt.cm.Spectral)
+# ax = Axes3D(fig)
+# ax = fig.add_subplot(111, projection='3d')
+# ax.set_title("Original data")
+# ax.scatter(X[:,0], X[:,1], X[:,2], c = t, cmap=plt.cm.Spectral)
 
 
 ## reduce dim with lle
